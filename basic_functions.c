@@ -1,24 +1,26 @@
 #include <stdio.h>
 
-int is_even(int);
+unsigned char is_even(int);
+unsigned char is_odd(int);
 
-int is_even(int number) {
+unsigned char is_even(int number) {
   return number % 2 == 0;
+};
+
+unsigned char is_odd(int number) {
+  return !is_even(number);
 };
 
 int main(void)
 {
   printf("Enter a number: ");
+
   int number;
   scanf("%d",&number);
-  if(is_even(number))
-  {
-    printf("%d is a even number\n", number);
-  }
-  else
-  {
-    printf("%d is not a even number\n", number);
-  }
+
+  printf("%d is %s number\n", number, is_even(number) ? "even" : "not even");
+  printf("%d is %s number\n", number, is_odd(number) ? "odd" : "not odd");
+  
   return 0;
 };
 
