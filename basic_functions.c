@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int isEven(int);
+int is_even(int);
 
-int isEven(int number) {
+int is_even(int number) {
   return number % 2 == 0;
 };
 
@@ -11,7 +11,7 @@ int main(void)
   printf("Enter a number: ");
   int number;
   scanf("%d",&number);
-  if(isEven(number))
+  if(is_even(number))
   {
     printf("%d is a even number\n", number);
   }
