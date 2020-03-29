@@ -9,6 +9,7 @@ double calculate_sum_of_N_numbers(float, unsigned);
 double calculate_product_of_N_num(float, unsigned);
 void print_odd_num_in_range(unsigned, unsigned);
 void print_every_nth_num_in_range(unsigned, unsigned, unsigned);
+unsigned long get_sum_of_even_num_in_range(unsigned, unsigned);
 
 unsigned long find_factorial(unsigned nthTerm)
 {
@@ -129,10 +130,22 @@ void print_every_nth_num_in_range(unsigned starting_value, unsigned end_value, u
   }
 };
 
+unsigned long get_sum_of_even_num_in_range(unsigned starting_value, unsigned end_value)
+{
+  unsigned long sum = 0;
+  unsigned even_num = starting_value % 2 == 0 ? starting_value : starting_value + 1;
+  while (even_num <= end_value) 
+  {
+    sum = sum + even_num;
+    even_num += 2;
+  } 
+  return sum;
+};
+
 int main(void)
 {
-  int term, number1, number2;
-  float num;
+  unsigned term, number1, number2;
+  float starting_value;
   printf("\n\n1. To calculate factorial of a number---");
   printf("\nEnter a number : ");
   scanf("%u", &term);
@@ -166,34 +179,41 @@ int main(void)
 
   printf("\n6. To calculate sum starting from a number upto nth term---");
   printf("\nEnter a starting value : ");
-  scanf("%f", &num);
+  scanf("%f", &starting_value);
   printf("Enter nth term : ");
   scanf("%u", &term);
-  printf("Sum of '%u' term starting from '%f' is '%lf\n", term, num, calculate_sum_of_N_numbers(num, term));
+  printf("Sum of '%u' term starting from '%f' is '%lf\n", term, starting_value, calculate_sum_of_N_numbers(starting_value, term));
 
-  printf("\n6. To calculate product starting from a number upto nth term---");
+  printf("\n7. To calculate product starting from a number upto nth term---");
   printf("\nEnter a starting value : ");
-  scanf("%f", &num);
+  scanf("%f", &starting_value);
   printf("Enter nth term : ");
   scanf("%u", &term);
-  printf("Product of '%u' term starting from '%f' is '%lf\n", term, num, calculate_product_of_N_num(num, term));
+  printf("Product of '%u' term starting from '%f' is '%lf\n", term, starting_value, calculate_product_of_N_num(starting_value, term));
 
-  printf("\n7. To print odd numbers series of given range---");
+  printf("\n8. To print odd numbers series of given range---");
   printf("\nEnter starting value : ");
-  scanf("%d", &number1);
+  scanf("%u", &number1);
   printf("Enter end value : ");
-  scanf("%d", &number2);
+  scanf("%u", &number2);
   print_odd_num_in_range(number1, number2);
   printf("\n");
 
-  printf("\n8. To print every nth number of given range---");
+  printf("\n9. To print every nth number of given range---");
   printf("\nEnter starting value : ");
-  scanf("%d", &number1);
+  scanf("%u", &number1);
   printf("Enter end value : ");
-  scanf("%d", &number2);
+  scanf("%u", &number2);
   printf("Enter nth term : ");
-  scanf("%d", &term);
+  scanf("%u", &term);
   print_every_nth_num_in_range(number1, number2, term);
   printf("\n");
+
+  printf("\n10. To calculate sum of all even number in given range---");
+  printf("\nEnter starting value : ");
+  scanf("%u", &number1);
+  printf("Enter end value : ");
+  scanf("%u", &number2);
+  printf("Sum of all even numbers is %lu\n", get_sum_of_even_num_in_range(number1, number2));
   return 0;
 }
