@@ -7,6 +7,7 @@ void print_even_num_series(unsigned);
 void print_multiplication_table(unsigned, unsigned);
 double calculate_sum_of_N_numbers(float, unsigned);
 double calculate_product_of_N_num(float, unsigned);
+void print_odd_num_in_range(unsigned, unsigned);
 
 unsigned long find_factorial(unsigned nthTerm)
 {
@@ -102,6 +103,20 @@ double calculate_product_of_N_num(float starting_value, unsigned length)
   return product;
 };
 
+void print_odd_num_in_range(unsigned starting_value, unsigned end_value)
+{
+  if((starting_value == 0 && end_value == 0) || starting_value > end_value)
+  {
+    printf("Invalid input");
+  }
+  unsigned odd_number = starting_value % 2 == 0 ? starting_value + 1 : starting_value;
+  while(odd_number <= end_value) 
+  {
+    printf("%u\t", odd_number);
+    odd_number += 2;
+  }
+};
+
 int main(void)
 {
   int term, number;
@@ -129,10 +144,10 @@ int main(void)
   print_even_num_series(term);
   printf("\n");
 
-  printf("\n5. To print multiplication table of a number upto nth term---");
-  printf("\nEnter a number : ");
+  printf("\n5. To print multiplication table of a number upto nth multiplier---");
+  printf("\nEnter multiplicand value : ");
   scanf("%u", &number);
-  printf("Enter nth term : ");
+  printf("Enter nth multiplier : ");
   scanf("%u", &term);
   print_multiplication_table(number, term);
   printf("\n");
@@ -151,5 +166,12 @@ int main(void)
   scanf("%u", &term);
   printf("Product of '%u' term starting from '%f' is '%lf\n", term, num, calculate_product_of_N_num(num, term));
 
+  printf("\n7. To print odd numbers series of given range---");
+  printf("\nEnter starting value : ");
+  scanf("%d", &number);
+  printf("Enter end value : ");
+  scanf("%d", &term);
+  print_odd_num_in_range(number, term);
+  printf("\n");
   return 0;
 }
