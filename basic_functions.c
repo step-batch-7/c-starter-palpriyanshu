@@ -4,11 +4,11 @@
 unsigned char is_even(int);
 unsigned char is_odd(int);
 
-long int find_square(int);
-long int find_cube(int);
+double find_square(float);
+double find_cube(float);
 
-int find_gcd(int, int);
-long int find_lcm(int, int);
+unsigned find_gcd(unsigned, unsigned);
+unsigned long find_lcm(unsigned, unsigned);
 
 double find_SI(float, float, float);
 double find_CI(float, float, float);
@@ -16,8 +16,8 @@ double find_CI(float, float, float);
 float convert_temp_feh_to_celsius(float);
 float convert_temp_celsius_to_fah(float);
 
-int find_greatest_of_three(int, int, int);
-float find_average_of_three(int, int, int);
+float find_greatest_of_three(float, float, float);
+float find_average_of_three(float, float, float);
 
 unsigned char is_even(int number) 
 {
@@ -29,23 +29,23 @@ unsigned char is_odd(int number)
   return !is_even(number);
 };
 
-long int find_square(int number) 
+double find_square(float number) 
 {
   return (number * number);
 };
 
-long int find_cube(int number) 
+double find_cube(float number) 
 {
   return (number * find_square(number));
 };
 
-int find_gcd(int num1, int num2)
+unsigned find_gcd(unsigned num1, unsigned num2)
 {
   if(num1 == 0 || num2 == 0)
   {
     return 0;
   }
-  int remainder = num1 % num2;
+  unsigned remainder = num1 % num2;
   while(remainder)
   {
     num1 = num2;
@@ -55,7 +55,7 @@ int find_gcd(int num1, int num2)
   return num2;
 };
 
-long int find_lcm(int num1, int num2)
+long unsigned find_lcm(unsigned num1, unsigned num2)
 {
   return (num1 * num2)/find_gcd(num1, num2);
 };
@@ -79,46 +79,64 @@ float convert_temp_celsius_to_fah(float temp)
  return temp / 5 * 9 + 32;
 };
 
-int find_greatest_of_three(int num1, int num2, int num3)
+float find_greatest_of_three(float num1, float num2, float num3)
 {
-  int larger_num = (num1 > num2) ? num1 : num2;
+  float larger_num = (num1 > num2) ? num1 : num2;
   return (larger_num > num3) ? larger_num : num3;
 };
 
-float find_average_of_three(int num1, int num2, int num3)
+float find_average_of_three(float num1, float num2, float num3)
 {
   return (num1 + num2 + num3) / 3;
 };
 
 int main(void)
 {
-  int num1, num2, num3;
+  int num;
 
-  printf("Enter a number: ");
-  scanf("%d",&num1);
+  printf("\n1. To check whether a number is even or not---");  
+  printf("\nEnter a number: ");
+  scanf("%d",&num);
+  printf("%d is a %s number\n", num, is_even(num) ? "even" : "not even");
 
-  printf("%d is a %s number\n", num1, is_even(num1) ? "even" : "not even");
-  printf("%d is a %s number\n", num1, is_odd(num1) ? "odd" : "not odd");
-  printf("Square of given number '%d' is %ld\n", num1, find_square(num1));
-  printf("Cube of given number '%d' is %ld\n", num1, find_cube(num1));
+  printf("\n2. To check whether a number is odd or not---");  
+  printf("\nEnter a number: ");
+  scanf("%d",&num);
+  printf("%d is a %s number\n", num, is_odd(num) ? "odd" : "not odd");
+  
+  float number;
+  printf("\n3. To find square of a number---");
+  printf("\nEnter a number: ");
+  scanf("%f",&number);
+  printf("Square of given number '%f' is %lf\n", number, find_square(number));
 
-  printf("\nTo find GCD and LCM---");
+  printf("\n4. To find cube of a number---");
+  printf("\nEnter a number: ");
+  scanf("%f",&number);
+  printf("Cube of given number '%f' is %lf\n", number, find_cube(number));
+
+  unsigned number1, number2;
+  printf("\n5. To find GCD of two numbers---");
   printf("\nEnter two numbers: \n");
-  scanf("%d %d",&num2, &num3);
+  scanf("%u %u",&number1, &number2);
 
-  int gcd = find_gcd(num2, num3);
+  unsigned gcd = find_gcd(number1, number2);
   if(gcd)
   {
-    printf("GCD of given numbers '%d' and '%d' is %d\n", num2, num3, gcd);
+    printf("GCD of given numbers '%u' and '%u' is %u\n", number1, number2, gcd);
   }
   else
   {
     printf("Invalid input\n");
   }
-  printf("LCM of given numbers '%d' and '%d' is %ld\n", num2, num3, find_lcm(num2, num3));
+
+  printf("\n6. To find LCM of two numbers---");
+  printf("\nEnter two numbers: \n");
+  scanf("%u %u",&number1, &number2);
+  printf("LCM of given numbers '%u' and '%u' is %lu\n", number1, number2, find_lcm(number1, number2));
 
   float principal, rate, time;
-  printf("\nTo calculate simple interest and compound interest---");
+  printf("\n7. To calculate simple interest---");
   printf("\nEnter principal amount : ");
   scanf("%f",&principal);
   printf("Enter rate value : ");
@@ -126,27 +144,36 @@ int main(void)
   printf("Enter time period : ");
   scanf("%f",&time);
   printf("SI is %lf rupees\n", find_SI(principal, rate, time));
+
+  printf("\n8. To calculate compound interest---");
+  printf("\nEnter principal amount : ");
+  scanf("%f",&principal);
+  printf("Enter rate value : ");
+  scanf("%f",&rate);
+  printf("Enter time period : ");
+  scanf("%f",&time);
   printf("CI is %lf rupees\n", find_CI(principal, rate, time));
 
   float temperature;
-  printf("\nTo convert temperature from fahrenheit to centigrade---");
+  printf("\n9. To convert temperature from fahrenheit to centigrade---");
   printf("\nEnter temperature in °F: ");
   scanf("%f",&temperature);
   printf("Temperature in celsius %f °C\n", convert_temp_feh_to_celsius(temperature));
 
-  printf("To convert temperature from centigrade to fahrenheit---");
+  printf("\n10. To convert temperature from centigrade to fahrenheit---");
   printf("\nEnter temperature in °C: ");
   scanf("%f",&temperature);
   printf("Temperature in fahrenheit %f °F\n", convert_temp_celsius_to_fah(temperature));
 
-  printf("\nTo find greatest of three numbers---");
+  float num1, num2, num3;
+  printf("\n11. To find greatest of three numbers---");
   printf("\nEnter three numbers : \n");
-  scanf("%d %d %d", &num1, &num2, &num3);
-  printf("Greatest of three numbers is %d \n", find_greatest_of_three(num1, num2, num3));
+  scanf("%f %f %f", &num1, &num2, &num3);
+  printf("Greatest of three numbers is %f \n", find_greatest_of_three(num1, num2, num3));
 
-  printf("\nTo find average of three numbers---");
+  printf("\n12. To find average of three numbers---");
   printf("\nEnter three numbers : \n");
-  scanf("%d %d %d", &num1, &num2, &num3);
+  scanf("%f %f %f", &num1, &num2, &num3);
   printf("Avarage of three numbers is %f \n", find_average_of_three(num1, num2, num3));
   
   return 0;
