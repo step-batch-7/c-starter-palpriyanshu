@@ -6,6 +6,7 @@ long int find_square(int);
 long int find_cube(int);
 int find_gcd(int, int);
 long int find_lcm(int, int);
+double find_SI(float, float, float);
 
 unsigned char is_even(int number) 
 {
@@ -48,11 +49,15 @@ long int find_lcm(int num1, int num2)
   return (num1 * num2)/find_gcd(num1, num2);
 }
 
+double find_SI(float principal, float rate, float time){
+  return (principal* rate * time)/100;
+}
+
 int main(void)
 {
-  printf("Enter a number: ");
+  int number, num1, num2;
 
-  int number;
+  printf("Enter a number: ");
   scanf("%d",&number);
 
   printf("%d is a %s number\n", number, is_even(number) ? "even" : "not even");
@@ -61,7 +66,6 @@ int main(void)
   printf("cube of given number '%d' is %ld\n", number, find_cube(number));
 
   printf("\nEnter two numbers: \n");
-  int num1, num2;
   scanf("%d %d",&num1, &num2);
 
   int gcd = find_gcd(num1, num2);
@@ -73,8 +77,16 @@ int main(void)
   {
     printf("invalid input\n");
   }
-
   printf("LCM of given numbers '%d' and '%d' is %ld\n", num1, num2, find_lcm(num1, num2));
+
+  float principal, rate, time;
+  printf("\nTo calculate simple interest---\nenter principal amount : ");
+  scanf("%f",&principal);
+  printf("enter rate value : ");
+  scanf("%f",&rate);
+  printf("enter time period : ");
+  scanf("%f",&time);
+  printf("SI is %lf rupees\n", find_SI(principal, rate, time));
 
   return 0;
 };
