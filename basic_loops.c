@@ -6,6 +6,7 @@ void print_odd_num_series(unsigned);
 void print_even_num_series(unsigned);
 void print_multiplication_table(unsigned, unsigned);
 double calculate_sum_of_N_numbers(float, unsigned);
+double calculate_product_of_N_num(float, unsigned);
 
 unsigned long find_factorial(unsigned nthTerm)
 {
@@ -91,6 +92,16 @@ double calculate_sum_of_N_numbers(float starting_value, unsigned length)
   return sum;
 };
 
+double calculate_product_of_N_num(float starting_value, unsigned length)
+{
+  double product = 1;
+  for (unsigned count = 0; count < length; count++ ) 
+  {
+    product = product * (starting_value + count);
+  }
+  return product;
+};
+
 int main(void)
 {
   int term, number;
@@ -125,6 +136,20 @@ int main(void)
   scanf("%u", &term);
   print_multiplication_table(number, term);
   printf("\n");
+
+  printf("\n6. To calculate sum starting from a number upto nth term---");
+  printf("\nEnter a starting value : ");
+  scanf("%f", &num);
+  printf("Enter nth term : ");
+  scanf("%u", &term);
+  printf("Sum of '%u' term starting from '%f' is '%lf\n", term, num, calculate_sum_of_N_numbers(num, term));
+
+  printf("\n6. To calculate product starting from a number upto nth term---");
+  printf("\nEnter a starting value : ");
+  scanf("%f", &num);
+  printf("Enter nth term : ");
+  scanf("%u", &term);
+  printf("Product of '%u' term starting from '%f' is '%lf\n", term, num, calculate_product_of_N_num(num, term));
 
   return 0;
 }
