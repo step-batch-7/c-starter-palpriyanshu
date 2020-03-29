@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 unsigned char is_even(int);
 unsigned char is_odd(int);
@@ -7,6 +8,7 @@ long int find_cube(int);
 int find_gcd(int, int);
 long int find_lcm(int, int);
 double find_SI(float, float, float);
+double find_CI(float, float, float);
 
 unsigned char is_even(int number) 
 {
@@ -53,6 +55,11 @@ double find_SI(float principal, float rate, float time){
   return (principal* rate * time)/100;
 }
 
+double find_CI(float principal, float rate, float time){
+  double amount = principal * pow(1+(rate/100), time);
+  return amount - principal;
+}
+
 int main(void)
 {
   int number, num1, num2;
@@ -80,13 +87,14 @@ int main(void)
   printf("LCM of given numbers '%d' and '%d' is %ld\n", num1, num2, find_lcm(num1, num2));
 
   float principal, rate, time;
-  printf("\nTo calculate simple interest---\nenter principal amount : ");
+  printf("\nTo calculate simple interest and compound interest---\nenter principal amount : ");
   scanf("%f",&principal);
   printf("enter rate value : ");
   scanf("%f",&rate);
   printf("enter time period : ");
   scanf("%f",&time);
   printf("SI is %lf rupees\n", find_SI(principal, rate, time));
+  printf("CI is %lf rupees\n", find_CI(principal, rate, time));
 
   return 0;
 };
