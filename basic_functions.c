@@ -17,6 +17,7 @@ float convert_temp_feh_to_celsius(float);
 float convert_temp_celsius_to_fah(float);
 
 int find_greatest_of_three(int, int, int);
+float find_average_of_three(int, int, int);
 
 unsigned char is_even(int number) 
 {
@@ -82,7 +83,12 @@ int find_greatest_of_three(int num1, int num2, int num3)
 {
   int larger_num = (num1 > num2) ? num1 : num2;
   return (larger_num > num3) ? larger_num : num3;
-}
+};
+
+float find_average_of_three(int num1, int num2, int num3)
+{
+  return (num1 + num2 + num3) / 3;
+};
 
 int main(void)
 {
@@ -122,21 +128,26 @@ int main(void)
   printf("SI is %lf rupees\n", find_SI(principal, rate, time));
   printf("CI is %lf rupees\n", find_CI(principal, rate, time));
 
-  float temperature1, temperature2;
+  float temperature;
   printf("\nTo convert temperature from fahrenheit to centigrade---");
   printf("\nEnter temperature in °F: ");
-  scanf("%f",&temperature1);
-  printf("Temperature in celsius %f °C\n", convert_temp_feh_to_celsius(temperature1));
+  scanf("%f",&temperature);
+  printf("Temperature in celsius %f °C\n", convert_temp_feh_to_celsius(temperature));
 
   printf("To convert temperature from centigrade to fahrenheit---");
   printf("\nEnter temperature in °C: ");
-  scanf("%f",&temperature2);
-  printf("Temperature in fahrenheit %f °F\n", convert_temp_celsius_to_fah(temperature2));
+  scanf("%f",&temperature);
+  printf("Temperature in fahrenheit %f °F\n", convert_temp_celsius_to_fah(temperature));
 
   printf("\nTo find greatest of three numbers---");
   printf("\nEnter three numbers : \n");
   scanf("%d %d %d", &num1, &num2, &num3);
   printf("Greatest of three numbers is %d \n", find_greatest_of_three(num1, num2, num3));
+
+  printf("\nTo find average of three numbers---");
+  printf("\nEnter three numbers : \n");
+  scanf("%d %d %d", &num1, &num2, &num3);
+  printf("Avarage of three numbers is %f \n", find_average_of_three(num1, num2, num3));
   
   return 0;
 };
