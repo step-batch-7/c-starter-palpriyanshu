@@ -10,6 +10,7 @@ long int find_lcm(int, int);
 double find_SI(float, float, float);
 double find_CI(float, float, float);
 float convert_temp_feh_to_celsius(float);
+float convert_temp_celsius_to_fah(float);
 
 unsigned char is_even(int number) 
 {
@@ -64,7 +65,12 @@ double find_CI(float principal, float rate, float time){
 float convert_temp_feh_to_celsius(float temp)
 {
   return ((temp - 32) * 5) / 9;
-}
+};
+
+float convert_temp_celsius_to_fah(float temp)
+{
+ return temp / 5 * 9 + 32;
+};
 
 int main(void)
 {
@@ -104,11 +110,16 @@ int main(void)
   printf("SI is %lf rupees\n", find_SI(principal, rate, time));
   printf("CI is %lf rupees\n", find_CI(principal, rate, time));
 
-  float temperature;
-  printf("\nTo convert temperature from fahrenheit to celsius---");
+  float temperature1, temperature2;
+  printf("\nTo convert temperature from fahrenheit to centigrade---");
   printf("\nEnter temperature in °F: ");
-  scanf("%f",&temperature);
-  printf("Temperature in celsius %f °C\n", convert_temp_feh_to_celsius(temperature));
+  scanf("%f",&temperature1);
+  printf("Temperature in celsius %f °C\n", convert_temp_feh_to_celsius(temperature1));
+
+  printf("To convert temperature from centigrade to fahrenheit---");
+  printf("\nEnter temperature in °C: ");
+  scanf("%f",&temperature2);
+  printf("Temperature in fahrenheit %f °F\n", convert_temp_celsius_to_fah(temperature2));
 
   return 0;
 };
