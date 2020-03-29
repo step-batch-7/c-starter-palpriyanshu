@@ -3,6 +3,7 @@
 unsigned long find_factorial(unsigned);
 void print_fibonacci_series(unsigned);
 void print_odd_num_series(unsigned);
+void print_even_num_series(unsigned);
 
 unsigned long find_factorial(unsigned nthTerm)
 {
@@ -39,7 +40,7 @@ void print_fibonacci_series(unsigned nthTerm)
     secondPreviousValue = currentValue;
     printf("%u\t", currentValue);
   };
-}
+};
 
 void print_odd_num_series(unsigned nthTerm)
 {
@@ -51,7 +52,19 @@ void print_odd_num_series(unsigned nthTerm)
   {
     printf("%u\t", term);
   };
-}
+};
+
+void print_even_num_series(unsigned nthTerm)
+{
+  if(nthTerm == 0)
+  {
+    printf("Invalid input");
+  }
+  for (int term = 0; term <= nthTerm; term += 2 ) 
+  {
+    printf("%u\t", term);
+  };
+};
 
 int main(void)
 {
@@ -71,6 +84,12 @@ int main(void)
   printf("\nEnter a number : ");
   scanf("%u", &term);
   print_odd_num_series(term);
+  printf("\n");
+
+  printf("\n4. To print even numbers series upto a term---");
+  printf("\nEnter a number : ");
+  scanf("%u", &term);
+  print_even_num_series(term);
   printf("\n");
 
   return 0;
