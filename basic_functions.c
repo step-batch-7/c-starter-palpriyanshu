@@ -3,14 +3,20 @@
 
 unsigned char is_even(int);
 unsigned char is_odd(int);
+
 long int find_square(int);
 long int find_cube(int);
+
 int find_gcd(int, int);
 long int find_lcm(int, int);
+
 double find_SI(float, float, float);
 double find_CI(float, float, float);
+
 float convert_temp_feh_to_celsius(float);
 float convert_temp_celsius_to_fah(float);
+
+int find_greatest_of_three(int, int, int);
 
 unsigned char is_even(int number) 
 {
@@ -72,32 +78,38 @@ float convert_temp_celsius_to_fah(float temp)
  return temp / 5 * 9 + 32;
 };
 
+int find_greatest_of_three(int num1, int num2, int num3)
+{
+  int larger_num = (num1 > num2) ? num1 : num2;
+  return (larger_num > num3) ? larger_num : num3;
+}
+
 int main(void)
 {
-  int number, num1, num2;
+  int num1, num2, num3;
 
   printf("Enter a number: ");
-  scanf("%d",&number);
+  scanf("%d",&num1);
 
-  printf("%d is a %s number\n", number, is_even(number) ? "even" : "not even");
-  printf("%d is a %s number\n", number, is_odd(number) ? "odd" : "not odd");
-  printf("Square of given number '%d' is %ld\n", number, find_square(number));
-  printf("Cube of given number '%d' is %ld\n", number, find_cube(number));
+  printf("%d is a %s number\n", num1, is_even(num1) ? "even" : "not even");
+  printf("%d is a %s number\n", num1, is_odd(num1) ? "odd" : "not odd");
+  printf("Square of given number '%d' is %ld\n", num1, find_square(num1));
+  printf("Cube of given number '%d' is %ld\n", num1, find_cube(num1));
 
   printf("\nTo find GCD and LCM---");
   printf("\nEnter two numbers: \n");
-  scanf("%d %d",&num1, &num2);
+  scanf("%d %d",&num2, &num3);
 
-  int gcd = find_gcd(num1, num2);
+  int gcd = find_gcd(num2, num3);
   if(gcd)
   {
-    printf("GCD of given numbers '%d' and '%d' is %d\n", num1, num2, gcd);
+    printf("GCD of given numbers '%d' and '%d' is %d\n", num2, num3, gcd);
   }
   else
   {
     printf("Invalid input\n");
   }
-  printf("LCM of given numbers '%d' and '%d' is %ld\n", num1, num2, find_lcm(num1, num2));
+  printf("LCM of given numbers '%d' and '%d' is %ld\n", num2, num3, find_lcm(num2, num3));
 
   float principal, rate, time;
   printf("\nTo calculate simple interest and compound interest---");
@@ -121,6 +133,11 @@ int main(void)
   scanf("%f",&temperature2);
   printf("Temperature in fahrenheit %f °F\n", convert_temp_celsius_to_fah(temperature2));
 
+  printf("\nTo find greatest of three numbers---");
+  printf("\nEnter three numbers : \n");
+  scanf("%d %d %d", &num1, &num2, &num3);
+  printf("Greatest of three numbers is %d \n", find_greatest_of_three(num1, num2, num3));
+  
   return 0;
 };
 
