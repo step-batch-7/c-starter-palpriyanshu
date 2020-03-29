@@ -83,10 +83,10 @@ void print_multiplication_table(unsigned multiplicand, unsigned nth_multiplier)
 
 double calculate_sum_of_N_numbers(float starting_value, unsigned length)
 {
-  double sum = starting_value;
-  for (unsigned count = 0; count <= length; count++ ) 
+  double sum = 0;
+  for (unsigned count = 0; count < length; count++ ) 
   {
-    sum = sum + length;
+    sum = sum + starting_value + count;
   }
   return sum;
 };
@@ -100,20 +100,20 @@ int main(void)
   scanf("%u", &term);
   printf("Factorial of given number '%u' is %lu\n", term, find_factorial(term));
 
-  printf("\n2. To print fibonacci series upto a term---");
-  printf("\nEnter a number : ");
+  printf("\n2. To print fibonacci series upto nth term---");
+  printf("\nEnter nth term value : ");
   scanf("%u", &term);
   print_fibonacci_series(term);
   printf("\n");
 
   printf("\n3. To print odd numbers series upto nth term---");
-  printf("\nEnter a number : ");
+  printf("\nEnter nth term value : ");
   scanf("%u", &term);
   print_odd_num_series(term);
   printf("\n");
 
   printf("\n4. To print even numbers series upto nth term---");
-  printf("\nEnter a number : ");
+  printf("\nEnter nth term value : ");
   scanf("%u", &term);
   print_even_num_series(term);
   printf("\n");
@@ -125,13 +125,6 @@ int main(void)
   scanf("%u", &term);
   print_multiplication_table(number, term);
   printf("\n");
-
-  printf("\n6. To calculate sum of a number upto nth term---");
-  printf("\nEnter a starting value : ");
-  scanf("%f", &num);
-  printf("Enter nth term : ");
-  scanf("%u", &term);
-  printf("Sum of '%u' numbers from '%f' is %lf\n",term, num, calculate_sum_of_N_numbers(num, term));
 
   return 0;
 }
