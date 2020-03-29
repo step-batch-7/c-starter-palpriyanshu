@@ -1,10 +1,11 @@
 #include <stdio.h>
 
-long int find_factorial(int);
+unsigned long find_factorial(unsigned);
+void find_fibonacci_series(unsigned);
 
-long int find_factorial(int nthTerm)
+unsigned long find_factorial(unsigned nthTerm)
 {
-  long int factorial=1, term;
+  unsigned long factorial=1, term;
 
   if(nthTerm == 0)
   {
@@ -19,13 +20,38 @@ long int find_factorial(int nthTerm)
   return factorial;
 }
 
+void print_fibonacci_series(unsigned nthTerm)
+{
+  unsigned firstPreviousValue = 0;
+  unsigned secondPreviousValue = 1;
+  unsigned currentValue = 0;
+
+  if(nthTerm == 0)
+  {
+    printf("Invalid input");
+  }
+
+  for (int term = 1; term <= nthTerm; term++ ) {
+    currentValue = currentValue + firstPreviousValue;
+    firstPreviousValue = secondPreviousValue;
+    secondPreviousValue = currentValue;
+    printf("%u\t", currentValue);
+  };
+}
+
 int main(void)
 {
   int term;
-  printf("\n\n 1. To calculate factorial of a number---");
+  printf("\n\n1. To calculate factorial of a number---");
   printf("\nEnter a number : ");
-  scanf("%d", &term);
-  printf("Factorial of given number '%d' is %ld\n", term, find_factorial(term));
+  scanf("%u", &term);
+  printf("Factorial of given number '%u' is %lu\n", term, find_factorial(term));
+
+  printf("\n2. To find fibonacci series upto a term---");
+  printf("\nEnter a number : ");
+  scanf("%u", &term);
+  print_fibonacci_series(term);
+  printf("\n");
 
   return 0;
 }
