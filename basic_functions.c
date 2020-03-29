@@ -5,6 +5,7 @@ unsigned char is_odd(int);
 long int find_square(int);
 long int find_cube(int);
 int find_gcd(int, int);
+long int find_lcm(int, int);
 
 unsigned char is_even(int number) 
 {
@@ -32,12 +33,19 @@ int find_gcd(int num1, int num2)
   {
     return 0;
   }
-  int smaller_num = (num1 < num2) ? num1 : num2;
-  if(num1 % num2 && num2 % num1)
+  int remainder = num1 % num2;
+  while(remainder)
   {
-    return 1;
+    num1 = num2;
+    num2 = remainder;
+    remainder = num1 % num2;
   }
-  return smaller_num;
+  return num2;
+};
+
+long int find_lcm(int num1, int num2)
+{
+  return (num1 * num2)/find_gcd(num1, num2);
 }
 
 int main(void)
@@ -53,18 +61,21 @@ int main(void)
   printf("cube of given number '%d' is %ld\n", number, find_cube(number));
 
   printf("\nEnter two numbers: \n");
-  int number1, number2;
-  scanf("%d %d",&number1, &number2);
+  int num1, num2;
+  scanf("%d %d",&num1, &num2);
 
-  int gcd = find_gcd(number1, number2);
+  int gcd = find_gcd(num1, num2);
   if(gcd)
   {
-    printf("GCD of given numbers '%d' and '%d' is %d\n", number1, number2, gcd);
+    printf("GCD of given numbers '%d' and '%d' is %d\n", num1, num2, gcd);
   }
   else
   {
     printf("invalid input\n");
   }
+
+  printf("LCM of given numbers '%d' and '%d' is %ld\n", num1, num2, find_lcm(num1, num2));
+
   return 0;
 };
 
