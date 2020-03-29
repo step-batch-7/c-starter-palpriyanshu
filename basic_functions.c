@@ -9,6 +9,7 @@ int find_gcd(int, int);
 long int find_lcm(int, int);
 double find_SI(float, float, float);
 double find_CI(float, float, float);
+float convert_temp_feh_to_celsius(float);
 
 unsigned char is_even(int number) 
 {
@@ -49,15 +50,20 @@ int find_gcd(int num1, int num2)
 long int find_lcm(int num1, int num2)
 {
   return (num1 * num2)/find_gcd(num1, num2);
-}
+};
 
 double find_SI(float principal, float rate, float time){
   return (principal* rate * time)/100;
-}
+};
 
 double find_CI(float principal, float rate, float time){
   double amount = principal * pow(1+(rate/100), time);
   return amount - principal;
+};
+
+float convert_temp_feh_to_celsius(float temp)
+{
+  return ((temp - 32) * 5) / 9;
 }
 
 int main(void)
@@ -69,9 +75,10 @@ int main(void)
 
   printf("%d is a %s number\n", number, is_even(number) ? "even" : "not even");
   printf("%d is a %s number\n", number, is_odd(number) ? "odd" : "not odd");
-  printf("square of given number '%d' is %ld\n", number, find_square(number));
-  printf("cube of given number '%d' is %ld\n", number, find_cube(number));
+  printf("Square of given number '%d' is %ld\n", number, find_square(number));
+  printf("Cube of given number '%d' is %ld\n", number, find_cube(number));
 
+  printf("\nTo find GCD and LCM---");
   printf("\nEnter two numbers: \n");
   scanf("%d %d",&num1, &num2);
 
@@ -82,19 +89,26 @@ int main(void)
   }
   else
   {
-    printf("invalid input\n");
+    printf("Invalid input\n");
   }
   printf("LCM of given numbers '%d' and '%d' is %ld\n", num1, num2, find_lcm(num1, num2));
 
   float principal, rate, time;
-  printf("\nTo calculate simple interest and compound interest---\nenter principal amount : ");
+  printf("\nTo calculate simple interest and compound interest---");
+  printf("\nEnter principal amount : ");
   scanf("%f",&principal);
-  printf("enter rate value : ");
+  printf("Enter rate value : ");
   scanf("%f",&rate);
-  printf("enter time period : ");
+  printf("Enter time period : ");
   scanf("%f",&time);
   printf("SI is %lf rupees\n", find_SI(principal, rate, time));
   printf("CI is %lf rupees\n", find_CI(principal, rate, time));
+
+  float temperature;
+  printf("\nTo convert temperature from fahrenheit to celsius---");
+  printf("\nEnter temperature in °F: ");
+  scanf("%f",&temperature);
+  printf("Temperature in celsius %f °C\n", convert_temp_feh_to_celsius(temperature));
 
   return 0;
 };
