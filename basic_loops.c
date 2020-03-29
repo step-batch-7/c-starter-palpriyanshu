@@ -8,6 +8,7 @@ void print_multiplication_table(unsigned, unsigned);
 double calculate_sum_of_N_numbers(float, unsigned);
 double calculate_product_of_N_num(float, unsigned);
 void print_odd_num_in_range(unsigned, unsigned);
+void print_every_nth_num_in_range(unsigned, unsigned, unsigned);
 
 unsigned long find_factorial(unsigned nthTerm)
 {
@@ -117,9 +118,20 @@ void print_odd_num_in_range(unsigned starting_value, unsigned end_value)
   }
 };
 
+void print_every_nth_num_in_range(unsigned starting_value, unsigned end_value, unsigned nthTerm)
+{
+  if((starting_value == 0 && end_value == 0) || starting_value > end_value)
+  {
+    printf("Invalid input");
+  }
+  for ( unsigned num = starting_value; num <= end_value; num += nthTerm ) {
+    printf("%u\t", num);
+  }
+};
+
 int main(void)
 {
-  int term, number;
+  int term, number1, number2;
   float num;
   printf("\n\n1. To calculate factorial of a number---");
   printf("\nEnter a number : ");
@@ -146,10 +158,10 @@ int main(void)
 
   printf("\n5. To print multiplication table of a number upto nth multiplier---");
   printf("\nEnter multiplicand value : ");
-  scanf("%u", &number);
+  scanf("%u", &number1);
   printf("Enter nth multiplier : ");
   scanf("%u", &term);
-  print_multiplication_table(number, term);
+  print_multiplication_table(number1, term);
   printf("\n");
 
   printf("\n6. To calculate sum starting from a number upto nth term---");
@@ -168,10 +180,20 @@ int main(void)
 
   printf("\n7. To print odd numbers series of given range---");
   printf("\nEnter starting value : ");
-  scanf("%d", &number);
+  scanf("%d", &number1);
   printf("Enter end value : ");
+  scanf("%d", &number2);
+  print_odd_num_in_range(number1, number2);
+  printf("\n");
+
+  printf("\n8. To print every nth number of given range---");
+  printf("\nEnter starting value : ");
+  scanf("%d", &number1);
+  printf("Enter end value : ");
+  scanf("%d", &number2);
+  printf("Enter nth term : ");
   scanf("%d", &term);
-  print_odd_num_in_range(number, term);
+  print_every_nth_num_in_range(number1, number2, term);
   printf("\n");
   return 0;
 }
