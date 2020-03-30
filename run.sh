@@ -2,5 +2,5 @@
 
 gcc -o basic_functions basic_functions.c && ./basic_functions
 gcc -o basic_loops basic_loops.c && ./basic_loops
-rm -rf ./basic_functions
-rm -rf ./basic_loops
+gcc -o currency_breakdown currency_breakdown.c && ./currency_breakdown
+rm -rf ./basic_functions  ./basic_loops  ./currency_breakdown
