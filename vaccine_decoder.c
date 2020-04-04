@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+int decrypt_char(int, int, int);
+void decrypt(char * , int);
+
 int decrypt_char(int char_ascii_code, int min, int max)
 {
   char_ascii_code = char_ascii_code + 13;
